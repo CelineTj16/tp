@@ -1,4 +1,3 @@
-// src/main/java/seedu/address/logic/parser/AddCommandParser.java
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -22,6 +21,9 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.person.Remark;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Parses input arguments and constructs a {@link seedu.address.logic.commands.AddCommand}.
+ **/
 public class AddCommandParser implements Parser<AddCommand> {
 
     @Override

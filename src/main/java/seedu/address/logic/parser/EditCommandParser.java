@@ -21,6 +21,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Remark;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Parses input arguments and creates a new {@link EditCommand} object.
+ * */
 public class EditCommandParser implements Parser<EditCommand> {
 
     @Override
@@ -55,10 +58,9 @@ public class EditCommandParser implements Parser<EditCommand> {
             descriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
 
-        // IMPORTANT: treat "r/" (present but empty) as "set remark to empty"
         if (!argMultimap.getAllValues(PREFIX_REMARK).isEmpty()) {
             String value = argMultimap.getValue(PREFIX_REMARK).orElse("");
-            Remark remark = ParserUtil.parseRemark(value); // "" if user typed r/
+            Remark remark = ParserUtil.parseRemark(value);
             descriptor.setRemark(remark);
         }
 
