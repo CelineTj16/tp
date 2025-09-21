@@ -9,6 +9,9 @@ import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Remark;
 
+/**
+ * Parses input arguments and creates a new {@link RemarkCommand}.
+ * */
 public class RemarkCommandParser implements Parser<RemarkCommand> {
     @Override
     public RemarkCommand parse(String args) throws ParseException {
@@ -24,7 +27,7 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
         }
 
         String remarkValue = argMultimap.getValue(PREFIX_REMARK).orElse("");
-        Remark remark = ParserUtil.parseRemark(remarkValue); // allows empty to clear
+        Remark remark = ParserUtil.parseRemark(remarkValue);
 
         return new RemarkCommand(index, remark);
     }
