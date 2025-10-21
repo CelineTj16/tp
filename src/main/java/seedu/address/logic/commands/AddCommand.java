@@ -24,17 +24,17 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a contact (vendor or client) to KnotBook. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a contact (vendor or client) to KnotBook.\n\n"
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_WEDDING_DATE + "WEDDING_DATE "
-            + PREFIX_TYPE + "TYPE "
-            + "[" + PREFIX_PRICE + "PRICE] "
-            + "[" + PREFIX_BUDGET + "BUDGET] "
+            + PREFIX_WEDDING_DATE + "DATE "
+            + PREFIX_TYPE + "(client|vendor) "
             + "[" + PREFIX_TAG + "TAG]...\n"
+            + "  For clients only: [" + PREFIX_BUDGET + "BUDGET] (e.g., 5000 or 5000-10000)\n"
+            + "  For vendors only: [" + PREFIX_PRICE + "PRICE] (e.g., 1000 or 1000-2000)\n\n"
             + "Example 1 (Client): " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
@@ -43,8 +43,7 @@ public class AddCommand extends Command {
             + PREFIX_WEDDING_DATE + "15-06-2020 "
             + PREFIX_TYPE + "client "
             + PREFIX_BUDGET + "5000-10000 "
-            + PREFIX_TAG + "friends"
-            + "\n"
+            + "\n\n"
             + "Example 2 (Vendor): " + COMMAND_WORD + " "
             + PREFIX_NAME + "Jane Smith "
             + PREFIX_PHONE + "91234567 "
@@ -52,7 +51,7 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "123 Orchard Road, #03-45 "
             + PREFIX_WEDDING_DATE + "20-07-2020 "
             + PREFIX_TYPE + "vendor "
-            + PREFIX_PRICE + "1000-2000 "
+            + PREFIX_PRICE + "1500 "
             + PREFIX_TAG + "photographer";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
