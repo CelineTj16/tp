@@ -19,7 +19,6 @@ Class CategoryPredicate
 package "Parser classes"{
   Class "<<interface>>\nParser" as Parser
   Class AddressBookParser
-  Class XYZCommandParser
   Class AddCommandParser
   Class EditCommandParser
   Class DeleteCommandParser
@@ -38,7 +37,6 @@ package "Parser classes"{
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> AddressBookParser
 
-AddressBookParser .down.> XYZCommandParser : <<create>>
 AddressBookParser .down.> AddCommandParser : <<create>>
 AddressBookParser .down.> EditCommandParser : <<create>>
 AddressBookParser .down.> DeleteCommandParser : <<create>>
@@ -49,16 +47,14 @@ AddressBookParser .down.> UnlinkCommandParser : <<create>>
 
 AddressBookParser ..> Command : <<use>>
 
-XYZCommandParser ..> XYZCommand : <<create>>
-AddCommandParser   ..> AddCommand   : <<create>>
-EditCommandParser  ..> EditCommand  : <<create>>
+AddCommandParser    ..> AddCommand    : <<create>>
+EditCommandParser   ..> EditCommand   : <<create>>
 DeleteCommandParser ..> DeleteCommand : <<create>>
-FindCommandParser  ..> FindCommand  : <<create>>
-CatCommandParser   ..> CatCommand   : <<create>>
-LinkCommandParser  ..> LinkCommand  : <<create>>
+FindCommandParser   ..> FindCommand   : <<create>>
+CatCommandParser    ..> CatCommand    : <<create>>
+LinkCommandParser   ..> LinkCommand   : <<create>>
 UnlinkCommandParser ..> UnlinkCommand : <<create>>
 
-XYZCommandParser     .up.|> Parser
 AddCommandParser     .up.|> Parser
 EditCommandParser    .up.|> Parser
 DeleteCommandParser  .up.|> Parser
@@ -67,17 +63,15 @@ CatCommandParser     .up.|> Parser
 LinkCommandParser    .up.|> Parser
 UnlinkCommandParser  .up.|> Parser
 
-XYZCommandParser   ..> ArgumentMultimap
-XYZCommandParser   ..> ArgumentTokenizer
-XYZCommandParser   ..> CliSyntax
-XYZCommandParser   ..> ParserUtil
+FindCommandParser  ..> ArgumentMultimap
+FindCommandParser  ..> ArgumentTokenizer
+FindCommandParser  ..> CliSyntax
+FindCommandParser  ..> ParserUtil
 ArgumentTokenizer  .left.> ArgumentMultimap
 CliSyntax          ..> Prefix
 ParserUtil         .down.> Prefix
 ArgumentTokenizer  .down.> Prefix
 
-Class XYZCommand
-XYZCommand -up-|> Command
 AddCommand -up-|> Command
 EditCommand -up-|> Command
 DeleteCommand -up-|> Command
