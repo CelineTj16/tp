@@ -45,7 +45,9 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     }
 
     private static boolean containsSubstringIgnoreCase(String haystack, String needle) {
-        if (haystack == null || needle == null) return false;
+        if (haystack == null || needle == null) {
+            return false;
+        }
         return haystack.toLowerCase().contains(needle.toLowerCase());
     }
 }
