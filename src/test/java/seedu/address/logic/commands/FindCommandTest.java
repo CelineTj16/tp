@@ -93,7 +93,8 @@ public class FindCommandTest {
 
     @Test
     public void execute_findByPartnerName_clientShown() {
-        var amira = new PersonBuilder().withName("Amira Tan").withType(PersonType.parse("CLIENT")).withPartner("Alex Ong").build();
+        var amira = new PersonBuilder().withName("Amira Tan").withType(PersonType.parse("CLIENT"))
+                .withPartner("Alex Ong").build();
         model.addPerson(amira);
         expectedModel.addPerson(amira);
 

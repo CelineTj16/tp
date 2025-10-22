@@ -90,14 +90,15 @@ public class NameContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_partnerNameMatch_client_returnsTrue() {
+    public void test_partnerNameMatchClient_returnsTrue() {
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Alex"));
-        Person client = new PersonBuilder().withName("Amira Tan").withType(PersonType.parse("CLIENT")).withPartner("Alex Ong").build();
+        Person client = new PersonBuilder().withName("Amira Tan").withType(PersonType.parse("CLIENT"))
+                .withPartner("Alex Ong").build();
         assertTrue(predicate.test(client));
     }
 
     @Test
-    public void test_partnerNameMatch_vendor_returnsFalse() {
+    public void test_partnerNameMatchVendor_returnsFalse() {
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Alex"));
         Person vendor = new PersonBuilder().withName("Kai Catering").withType(PersonType.parse("VENDOR")).build();
         assertFalse(predicate.test(vendor));
