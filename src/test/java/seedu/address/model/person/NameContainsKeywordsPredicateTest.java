@@ -82,4 +82,24 @@ public class NameContainsKeywordsPredicateTest {
         String expected = NameContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";
         assertEquals(expected, predicate.toString());
     }
+
+    @Test
+    public void test_substringMatch_returnsTrue() {
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("li"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+    }
+
+    @Test
+    public void test_partnerNameMatch_client_returnsTrue() {
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Alex"));
+        Person client = new PersonBuilder().withName("Amira Tan").withType(PersonType.parse("CLIENT")).withPartner("Alex Ong").build();
+        assertTrue(predicate.test(client));
+    }
+
+    @Test
+    public void test_partnerNameMatch_vendor_returnsFalse() {
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Alex"));
+        Person vendor = new PersonBuilder().withName("Kai Catering").withType(PersonType.parse("VENDOR")).build();
+        assertFalse(predicate.test(vendor));
+    }
 }
